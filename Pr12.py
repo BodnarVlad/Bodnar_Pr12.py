@@ -19,11 +19,19 @@ except KeyError:
     print("Студента з таким ім'ям не знайдено.")
 
 Завдання 3
-students = {"Іван": 80, "Марія": 95, "Олег": 78, "Анна": 85}
+import random
 
-name = input("Введіть ім’я студента: ")
+numbers = [random.randint(1, 100) for _ in range(1000)]
 
-try:
-    print(f"Оцінка студента {name}: {students[name]}")
-except KeyError:
-    print("Студента з таким ім'ям не знайдено.")
+count_dict = {}
+for num in numbers:
+    if num in count_dict:
+        count_dict[num] += 1
+    else:
+        count_dict[num] = 1
+
+max_num = max(count_dict, key=count_dict.get)
+max_count = count_dict[max_num]
+
+print(f"Найчастіше повторюється число {max_num}, кількість повторів: {max_count}")
+
